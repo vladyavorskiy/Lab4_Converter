@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:con4="clr-namespace:con4"
+             x:Class="con4.MainPage" 
+             x:DataType="con4:MainViewModel">
+
+    <ContentPage.BindingContext>
+        <con4:MainViewModel />
+    </ContentPage.BindingContext>
+
+
+    <Grid  Padding="20,30" RowSpacing="20" ColumnSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.ColumnSpan="3" 
+               Text="Конвертер валют" 
+               FontSize="45" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <StackLayout Grid.Row="1" Grid.Column="2">
+            <DatePicker Margin="0,10" 
+                        Format="MM/dd/yyyy"
+                        FontSize="20"
+                        HorizontalOptions="End"
+                        Date="{Binding SelectedDate}" />
+
+            <Label Text="{Binding SelectedDate, StringFormat='Выбранная дата: {0:d}'}"
+                   FontSize="15"
+                   HorizontalOptions="End"/>
+        </StackLayout>
+
+        <StackLayout Grid.Column="0" Grid.Row="2" Spacing="10" HorizontalOptions="Start" >
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Text="Выберите валюту: " 
+               FontSize="15"/>
+
+        <Frame BorderColor="Black" 
+               CornerRadius="2"
+               Padding="0"
+               HeightRequest="45"
+               Grid.Row="4"
+               Grid.Column="1">
+            <Picker Grid.Row="3"
+                    Grid.Column="0" 
+                    x:Name="ValutesFirstPicker"
+                    FontSize="20"
+                    ItemsSource="{Binding ValutesList}"
+                    SelectedItem="{Binding SelectedFirstValute}" 
+                    WidthRequest="300"/>
+            </Frame>
+            <!--<Picker Grid.Row="3"
+                Grid.Column="0" 
+                x:Name="ValutesFirstPicker"
+                FontSize="20"
+                ItemsSource="{Binding ValutesList}"
+                SelectedItem="{Binding SelectedFirstValute}" 
+                WidthRequest="300"/>-->
+
+        <StackLayout Grid.Row="4" Grid.Column="0" Spacing="10" Orientation="Horizontal">
+            <Label Text="Обменный курс к рублю:  " 
+                   FontSize="15" 
+                   VerticalOptions="Center"
+                   FontAttributes="Italic"/>
+            <Label Text="{Binding SelectedFirstValute.Value}" 
+                   FontSize="15" 
+                   VerticalOptions="Center" 
+                   FontAttributes="Italic"/>
+        </StackLayout></StackLayout>
+
+
+
+    <StackLayout Grid.Column="0"  Grid.Row="4" Spacing="10"  HorizontalOptions="End">
+        <Label Grid.Row="6"
+               Grid.Column="0"
+               Text="Выберите валюту: " 
+               FontSize="15"/>
+
+        <Frame BorderColor="Black" 
+               CornerRadius="2"
+               Padding="0"
+               HeightRequest="45"
+               Grid.Row="4"
+               Grid.Column="1">
+            <Picker Grid.Row="7"
+                    Grid.Column="0" 
+                    x:Name="ValutesSecondPicker"
+                    FontSize="20"
+                    ItemsSource="{Binding ValutesList}"
+                    SelectedItem="{Binding SelectedSecondValute}" 
+                    WidthRequest="300"/>
+            </Frame>
+
+            <!--<Picker Grid.Row="7"
+                Grid.Column="0" 
+                x:Name="ValutesSecondPicker"
+                FontSize="20"
+                ItemsSource="{Binding ValutesList}"
+                SelectedItem="{Binding SelectedSecondValute}" 
+                WidthRequest="300"/>-->
+
+        <StackLayout Grid.Row="8" Grid.Column="0" Spacing="10" Orientation="Horizontal">
+            <Label Text="Обменный курс к рублю: "
+                   FontSize="15" 
+                   VerticalOptions="Center"
+                   FontAttributes="Italic"/>
+            <Label Text="{Binding SelectedSecondValute.Value}" 
+                   FontSize="15" 
+                   VerticalOptions="Center" 
+                   FontAttributes="Italic"/>
+        </StackLayout>
+    </StackLayout>
+
+
+        <!--<Entry Grid.Row="2"
+               Grid.Column="1" 
+               Placeholder="Enter a value"
+               VerticalOptions="Center"
+               FontSize="20"
+               Text="{Binding ValueInput}"
+               WidthRequest="300"/>-->
+
+
+        <!--<Label Grid.Row="4"
+               Grid.Column="1" 
+               Text="{Binding Res, StringFormat='{0:F2}'}"
+               FontSize="20"
+               VerticalOptions="Center"
+               WidthRequest="300"/>-->
+
+
+        <Frame BorderColor="Black" 
+               CornerRadius="2" 
+               Padding="0" 
+               HeightRequest="45"
+               Grid.Row="2"
+               Grid.Column="2"
+               WidthRequest="300">
+            <Entry Placeholder="Enter a value"
+                   VerticalOptions="Center"
+                   FontSize="20"
+                   Text="{Binding ValueInput}"
+/>
+        </Frame>
+
+        <Frame BorderColor="Black"
+               CornerRadius="2"
+               Padding="0"
+               HeightRequest="45"
+               Grid.Row="4"
+               Grid.Column="2"
+               WidthRequest="300"
+               VerticalOptions="Center">
+            <Label Text="{Binding Res, StringFormat='{0:F2}'}"
+                       FontSize="20"
+                       VerticalOptions="Center"/>
+        </Frame>
+
+    </Grid>
+
+</ContentPage>
+
+
+
+    
